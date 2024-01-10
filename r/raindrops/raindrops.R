@@ -1,16 +1,13 @@
 raindrops <- function(number) {
-  out <- ""
+  noise <- c("Pling" = 3, "Plang" = 5, "Plong" = 7)
 
-  # if it has 3 as a factor, add 'Pling' to the result.
-  if (number %% 3 == 0) out <- paste0(out, "Pling")
-  
-  # if it has 5 as a factor, add 'Plang' to the result.
-  if (number %% 5 == 0) out <- paste0(out, "Plang")
+  # check if the number is divisible by noise
+  out <- (number %% noise) == 0
 
-  # if it has 7 as a factor, add 'Plong' to the result.
-  if (number %% 7 == 0) out <- paste0(out, "Plong")
+  # get the character noise based the division
+  out <- names(out)[out] |> paste0(collapse = "")
 
-  # if it doesn't have any of 3, 5, or 7 as a factor, the result should be the digits of the number.
+  # output number if it is not divisible by noise
   if (out == "") return(as.character(number))
 
   return(out)
